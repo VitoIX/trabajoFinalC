@@ -11,5 +11,7 @@ int main(){
 
 
     printf("Salio un %d y un %d.\n", tirada.numeros[0], tirada.numeros[1]);
+
+    dibujaDado(tirada);
     return(0);
 }
