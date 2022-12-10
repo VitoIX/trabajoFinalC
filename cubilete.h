@@ -8,9 +8,6 @@
 
 #if !defined(MAX_CANT_DADOS)
 #define MAX_CANT_DADOS 5
-
-
-
 #endif // MAX_CANT_DADOS
 
 
