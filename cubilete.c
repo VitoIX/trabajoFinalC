@@ -1,5 +1,6 @@
+#ifndef inclusion.h
 #include "inclusion.h"
-#include "cubilete.h"
+#endif
 
 Dados usaCubilete(Dados tirada){
     int indice;
@@ -16,7 +17,6 @@ Dados usaCubilete(Dados tirada){
 int aleatorio(){ // funcion que devuelve un número aleatorio entre 1 y TAMAÑO_DADO
     int numero = 0; //un dado no puede valer 0 si vale 0 algo falló
 
-    srand(time(NULL));
     numero = (rand() % (TAMANO_DADO)) + 1; //numero aleatorio entre 1 y TAMAÑO_DADO
 
     return(numero);

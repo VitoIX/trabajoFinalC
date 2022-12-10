@@ -17,8 +17,8 @@
 typedef struct dados
 {
     /* data */
-    int cantidad = CANTIDAD_DADOS_DEFECTO;
-    int numeros[MAX_CANT_DADOS] = {0, 0, 0, 0, 0};
+    int cantidad;
+    int numeros[MAX_CANT_DADOS];
 } Dados;
 
 
