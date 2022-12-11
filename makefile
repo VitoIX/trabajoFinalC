@@ -5,15 +5,15 @@ salida_path := ./ejecutables/
 
 todo: jueguito
 	echo "soy jueguito"
-jueguito: $(puntosO_path)tablero.o $(puntosO_path)cubilete.o $(puntosO_path)jugador.o $(puntosO_path)dibujaDado.o
-	gcc -W -Wall -o $(salida_path)jueguito $(puntosO_path)tablero.o $(puntosO_path)cubilete.o $(puntosO_path)dibujaDado.o
+jueguito: $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)jugador.o $(puntosO_path)dibujaDado.o
+	gcc -W -Wall -o $(salida_path)jueguito $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)dibujaDado.o
 	gcc -W -Wall -o $(salida_path)jugador $(puntosO_path)jugador.o
 
 $(puntosO_path)tablero.o: $(tablero_path)inclusion.h $(tablero_path)tablero.c
 	gcc -W -Wall -c $(tablero_path)tablero.c -o $(puntosO_path)tablero.o
 
-$(puntosO_path)cubilete.o: $(tablero_path)inclusion.h $(tablero_path)cubilete.h $(tablero_path)cubilete.c
-	gcc -W -Wall -c $(tablero_path)cubilete.c -o $(puntosO_path)cubilete.o
+$(puntosO_path)usaCubilete.o: $(tablero_path)inclusion.h $(tablero_path)usaCubilete.h $(tablero_path)usaCubilete.c
+	gcc -W -Wall -c $(tablero_path)usaCubilete.c -o $(puntosO_path)usaCubilete.o
 
 $(puntosO_path)dibujaDado.o: $(tablero_path)dibujaDado.h $(tablero_path)dibujaDado.c
 	gcc -W -Wall -c $(tablero_path)dibujaDado.c -o $(puntosO_path)dibujaDado.o
