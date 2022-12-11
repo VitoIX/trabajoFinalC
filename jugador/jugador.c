@@ -1,7 +1,5 @@
 #include "jugador.h"
-#ifndef reglas_h
-#include "../comoJugar/reglas.h"
-#endif
+
 
 int main(){
     int seleccion;

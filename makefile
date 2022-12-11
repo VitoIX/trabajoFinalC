@@ -2,6 +2,7 @@ jugador_path := ./jugador/
 tablero_path := ./mesa/
 puntosO_path := ./puntosO/
 salida_path := ./ejecutables/
+reglas_path := ./comoJugar/
 
 todo: jueguito jugador
 	echo "soy jueguito"
@@ -20,10 +21,15 @@ $(puntosO_path)dibujaDado.o: $(tablero_path)dibujaDado.h $(tablero_path)dibujaDa
 
 
 
-jugador: $(puntosO_path)jugador.o
-	gcc -W -Wall -o $(salida_path)jugador $(puntosO_path)jugador.o
+jugador: $(puntosO_path)jugador.o $(puntosO_path)reglas.o
+	gcc -W -Wall -o $(salida_path)jugador $(puntosO_path)jugador.o $(puntosO_path)reglas.o
 $(puntosO_path)jugador.o: $(jugador_path)jugador.h $(jugador_path)jugador.c
-	gcc -W -Wall -c $(jugador_path)jugador.c -o $(puntosO_path)jugador.o
+	gcc -W -Wall -c $(jugador_path)jugador.c -o $(puntosO_path)jugador.o 
+
+
+
+$(puntosO_path)reglas.o: $(reglas_path)reglas.h $(reglas_path)reglas.c
+	gcc -W -Wall -c $(reglas_path)reglas.c -o $(puntosO_path)reglas.o
 
 
 

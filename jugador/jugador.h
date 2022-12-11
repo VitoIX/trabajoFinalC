@@ -3,6 +3,9 @@
 #include <conio.h>
 #include <stdbool.h>
 
+#ifndef reglas_h
+#include "../comoJugar/reglas.h"
+#endif
 
 
 
