@@ -31,7 +31,7 @@ int hacerTirada(){
     return(resultado);
 }
 
-int leerResultado(){
+int leerResultado(bool npc){
     int resultado;
     return(resultado);
 }

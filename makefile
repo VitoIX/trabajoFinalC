@@ -3,9 +3,12 @@ tablero_path := ./mesa/
 puntosO_path := ./puntosO/
 salida_path := ./ejecutables/
 reglas_path := ./comoJugar/
+semaforos_path := ./semaforos/
 
-todo: jueguito jugador
+todo: jueguito jugador crea_sem elimina_sem
 	echo "soy jueguito"
+
+
 jueguito: $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)dibujaDado.o $(puntosO_path)reglas.o
 	gcc -W -Wall -pthread -o $(salida_path)jueguito $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)dibujaDado.o $(puntosO_path)reglas.o
 
@@ -33,5 +36,12 @@ $(puntosO_path)reglas.o: $(reglas_path)reglas.h $(reglas_path)reglas.c
 
 
 
+crea_sem: $(semaforos_path)crea_sem.h $(semaforos_path)crea_sem.c
+	gcc -W -Wall -pthread -o $(salida_path)crea_sem $(semaforos_path)crea_sem.c
+
+elimina_sem: $(semaforos_path)elimina_sem.h $(semaforos_path)elimina_sem.c
+	gcc -W -Wall -pthread -o $(salida_path)elimina_sem $(semaforos_path)elimina_sem.c
+
+	
 borra:
 	rm $(puntosO_path)*.o
