@@ -17,10 +17,10 @@ int main(){
         switch (seleccion)
         {
         case 1:
-            printf("Introduce el n\243mero de jugadores (1 - LIMITE_JUGADORES).\n");
+            printf("Introduce el n\243mero de jugadores (2 - LIMITE_JUGADORES).\n");
             seleccion = getch() - ASCII_CERO;
-            while(!(seleccion >= 1 && seleccion <= LIMITE_JUGADORES)){
-                printf("Valor introducido incorrecto, introduce el numero de jugadores entre 1 y LIMITE_JUGADORES \n");
+            while(!(seleccion >= 2 && seleccion <= LIMITE_JUGADORES)){
+                printf("Valor introducido incorrecto, introduce el numero de jugadores entre 2 y LIMITE_JUGADORES \n");
                 printf("Introduce q para cancelar.\n");
                 seleccion = getch() - ASCII_CERO;
                 if(seleccion  == 'q' - ASCII_CERO || seleccion  == 'Q' - ASCII_CERO){
@@ -54,15 +54,15 @@ int main(){
 
 void imprimeResultado(int resultado){
     if(resultado == GANAR){
-
+        printf(MSG_VICTORIA);
     }
     else if (resultado == PERDER)
     {
-        /* code */
+        printf(MSG_DERROTA);
     }
     else if (resultado == EMPATE)
     {
-        /* code */
+        printf(MSG_EMPATE);
     }    
     else{
         printf("Algo ha fallado, resultado");

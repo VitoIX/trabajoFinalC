@@ -4,11 +4,12 @@
 
 int jugarPartida(int jugadores){
     int resultado;
+    bool pnj = false;
     printf("Weno vamo a juga %d\n",jugadores);
     cogerCubilete();
     hacerTirada();
     soltarCubilete();
-    resultado = leerResultado();
+    resultado = leerResultado(pnj);
     
     return(resultado);
 }

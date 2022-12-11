@@ -6,10 +6,10 @@ reglas_path := ./comoJugar/
 
 todo: jueguito jugador
 	echo "soy jueguito"
-jueguito: $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)dibujaDado.o
-	gcc -W -Wall -o $(salida_path)jueguito $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)dibujaDado.o	
+jueguito: $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)dibujaDado.o $(puntosO_path)reglas.o
+	gcc -W -Wall -pthread -o $(salida_path)jueguito $(puntosO_path)tablero.o $(puntosO_path)usaCubilete.o $(puntosO_path)dibujaDado.o $(puntosO_path)reglas.o
 
-$(puntosO_path)tablero.o: $(tablero_path)inclusion.h $(tablero_path)tablero.c
+$(puntosO_path)tablero.o: $(tablero_path)inclusion.h $(tablero_path)tablero.c $(tablero_path)tablero.h
 	gcc -W -Wall -c $(tablero_path)tablero.c -o $(puntosO_path)tablero.o
 
 $(puntosO_path)usaCubilete.o: $(tablero_path)inclusion.h $(tablero_path)usaCubilete.h $(tablero_path)usaCubilete.c
