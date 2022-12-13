@@ -1,6 +1,5 @@
-#ifndef inclusion_h
 #include "inclusion.h"
-#endif
+#include "usaCubilete.h"
 
 Dados usaCubilete(Dados tirada){
     int indice;

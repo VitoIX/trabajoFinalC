@@ -1,8 +1,9 @@
-#include <stdbool.h>
+#ifndef _reglas_h
+#define _reglas_h
 
-#ifndef stdio_h
+#include <stdbool.h>
 #include <stdio.h>
-#endif
+
 
 #define LIMITE_JUGADORES 4
 #define GANAR 1
@@ -18,3 +19,5 @@ bool cogerCubilete();
 int hacerTirada();
 bool soltarCubilete();
 int leerResultado(bool);
+
+#endif

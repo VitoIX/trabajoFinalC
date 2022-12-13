@@ -1,6 +1,5 @@
-#ifndef reglas_h
 #include "reglas.h"
-#endif
+
 
 int jugarPartida(int jugadores){
     int resultado;

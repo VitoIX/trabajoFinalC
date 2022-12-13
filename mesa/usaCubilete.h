@@ -1,3 +1,6 @@
+#ifndef _usaCubilete_h
+#define _usaCubilete_h
+
 #if !defined(TAMANO_DADO)
 #define TAMANO_DADO 6
 #endif // tamaño de los dados
@@ -26,3 +29,4 @@ typedef struct dados
 
 int aleatorio();
 Dados usaCubilete(Dados);
+#endif

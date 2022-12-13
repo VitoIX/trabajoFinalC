@@ -1,11 +1,13 @@
+#ifndef _jugador_h
+#define _jugador_h
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <stdbool.h>
 
-#ifndef reglas_h
+
 #include "../comoJugar/reglas.h"
-#endif
+
 
 
 
@@ -13,3 +15,5 @@
 
 
 void imprimeResultado(int);
+
+#endif

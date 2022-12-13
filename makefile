@@ -5,7 +5,7 @@ salida_path := ./ejecutables/
 reglas_path := ./comoJugar/
 semaforos_path := ./semaforos/
 
-todo: jueguito jugador crea_sem elimina_sem
+todo: jueguito jugador 
 	echo "soy jueguito"
 
 
