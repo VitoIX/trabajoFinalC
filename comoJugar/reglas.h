@@ -3,6 +3,10 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include <ctype.h>
+//#include <sys/msg.h>
+#include <string.h>
+
 
 
 #define LIMITE_JUGADORES 4
@@ -14,10 +18,17 @@
 #define MSG_DERROTA "DERROTA\n"
 #define MSG_EMPATE "EMPATE\n"
 
+#define MAX_SEND_SIZE 80
+
 int jugarPartida(int);
 bool cogerCubilete();
 int hacerTirada();
 bool soltarCubilete();
 int leerResultado(bool);
+
+struct mymsgbuf{
+ long mtype;
+ char mtext[MAX_SEND_SIZE];
+}; 
 
 #endif

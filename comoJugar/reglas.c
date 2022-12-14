@@ -1,3 +1,4 @@
+
 #include "reglas.h"
 
 
@@ -26,7 +27,7 @@ bool soltarCubilete(){
 }
 
 int hacerTirada(){
-    int resultado;
+    int resultado = -1;
     return(resultado);
 }
 

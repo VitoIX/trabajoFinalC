@@ -34,6 +34,8 @@ int main(){
             else{//el valor esta bien introducido y no quiere salir
                 resultado = jugarPartida(seleccion);
                 imprimeResultado(resultado);
+                printf("Pulsa un bot\243n para continuar \n");
+                getch();
                 
             }
             break;
@@ -66,7 +68,7 @@ void imprimeResultado(int resultado){
         printf(MSG_EMPATE);
     }    
     else{
-        printf("Algo ha fallado, resultado");
+        printf("Algo ha fallado %d\n", resultado);
     }
     
 
