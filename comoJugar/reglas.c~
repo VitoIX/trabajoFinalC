@@ -33,7 +33,7 @@ bool soltarCubilete(){
 	 char *nombre = NULL;
 	 nombre = SEM_CUBILETE; //guardo nombre del semaforo
 	 cubilete = sem_open(nombre, 0); //abrimos el semaforo binario
-	 printf("Procedo a subir el semaforo cubilete \n");
+	 printf("Procedo a bajar el semaforo cubilete \n");
 	 sem_post(cubilete);
     return(resultado);
 }

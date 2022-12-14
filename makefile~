@@ -25,7 +25,7 @@ $(puntosO_path)dibujaDado.o: $(tablero_path)dibujaDado.h $(tablero_path)dibujaDa
 
 
 jugador: $(puntosO_path)jugador.o $(puntosO_path)reglas.o
-	gcc -W -Wall -pthread -o $(salida_path)jugador $(puntosO_path)jugador.o $(puntosO_path)reglas.o
+	gcc -W -Wall -o $(salida_path)jugador $(puntosO_path)jugador.o $(puntosO_path)reglas.o
 $(puntosO_path)jugador.o: $(jugador_path)jugador.h $(jugador_path)jugador.c
 	gcc -W -Wall -c $(jugador_path)jugador.c -o $(puntosO_path)jugador.o 
 

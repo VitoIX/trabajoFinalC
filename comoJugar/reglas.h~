@@ -9,8 +9,8 @@
 
 /*includes semaforos */
 #include <semaphore.h>
-//#include <fcntl.h>
-//#include <unistd.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <pthread.h>
 
 
