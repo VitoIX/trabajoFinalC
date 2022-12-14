@@ -1,6 +1,6 @@
-#ifndef inclusion_h
 #include "inclusion.h"
-#endif
+#include "dibujaDado.h"
+
 
 void dibujaDado(Dados dado) {
     char *cara[6][5] = {{"+-------+\n", "|       |\n", "|   *   |\n", "|       |\n", "+-------+\n"}, //1
