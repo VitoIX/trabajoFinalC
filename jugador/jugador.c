@@ -31,9 +31,10 @@ int main(){
             if(cancelar == true){
                 cancelar = false;
             }
-            else{
+            else{//el valor esta bien introducido y no quiere salir
                 resultado = jugarPartida(seleccion);
                 imprimeResultado(resultado);
+                
             }
             break;
         case 2:
