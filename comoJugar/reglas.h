@@ -9,9 +9,15 @@
 
 /*includes semaforos */
 #include <semaphore.h>
-//#include <fcntl.h>
-//#include <unistd.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <pthread.h>
+
+/*MEMORIA COMPARTIDA*/
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <ctype.h>
 
 
 #define LIMITE_JUGADORES 4
@@ -31,6 +37,11 @@
 /*SEMAFOROS*/
 
 #define SEM_CUBILETE "cubilete"
+
+/*MEMORIA COMPARTIDA*/
+#define MEMORIA_INDICE_JUGADOR 0  //debe ser 0 porque en algun lugar los npcs los recorro sumandole a esto
+
+
 
 
 #define TIPO_MSG_TIRADA 14

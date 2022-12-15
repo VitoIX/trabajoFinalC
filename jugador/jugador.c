@@ -67,7 +67,7 @@ void imprimeResultado(int resultado, char *ganador){
     else if (resultado == PERDER)
     {
         printf(MSG_DERROTA);
-        printf("El ganador es %s\n", ganador);
+        printf("El ganador es el NPC%s\n", ganador);
         //añadir un lee tirada para ver cuanto saca jugador y quien ganó
     }
     else if (resultado == EMPATE)

@@ -8,6 +8,11 @@
 #include "dibujaDado.h"
 
 
+
+
+
+
+
 #include <pthread.h>
 #include <unistd.h>
 #include <semaphore.h>
@@ -26,5 +31,6 @@ int tiempoAleatorio();
 Dados esperaTirada(Dados);
 void almacenaTirada(Dados, int);
 int comparaTiradas(Dados, Dados);
+void anunciaGanador(Dados);
 
 #endif

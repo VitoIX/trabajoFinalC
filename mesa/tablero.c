@@ -72,6 +72,7 @@ int main(int argc, char *argv[]){  //tablero debe recibir un parametro con el no
                 break;
             }
         }
+        anunciaGanador(tiradaMax);
 
         flag = false;
     }
@@ -89,7 +90,7 @@ int main(int argc, char *argv[]){  //tablero debe recibir un parametro con el no
 int esperaInicio(char *nombre){
     int numJugadores = -1;    
     //sem_wait(semInicio); en windows los semaforos no funcionan bien si los crea otro proceso
-    sem_t *semInicio = sem_open(nombre, O_CREAT, 0600, 0);
+    sem_t *semInicio = sem_open(nombre, 0);
     printf("Esperando inicio\n");
     sem_wait(semInicio);
     printf("Me canse de esperar a ver cuantos juegan\n");
@@ -129,18 +130,23 @@ tirada.cantidad = CANTIDAD_DADOS_DEFECTO;
  	long tipo = TIPO_MSG_TIRADA;
  	struct mymsgbuf qbuffer;
  	clave=ftok(".",'m');
+    if ((msgqueue_id=msgget(clave,IPC_CREAT|0660))==-1) //iniciamos la cola
+ 	{
+ 			printf("Error al iniciar la cola\n");
+ 	}
+    else{
+        leer_msg(msgqueue_id, tipo, &qbuffer);
+        strncpy(mensaje, qbuffer.mtext, 2);
 
-    leer_msg(msgqueue_id, tipo, &qbuffer);
-    strncpy(mensaje, qbuffer.mtext, 2);
+        if(mensaje[0] == MSG_TIRADA){
+            tirada.id = ID_JUGADOR;
+        }
+        else{//es un NPC
+            tirada.id = mensaje[0];
+        }
 
-    if(mensaje[0] == MSG_TIRADA){
-        tirada.id = ID_JUGADOR;
+        tirada = usaCubilete(tirada);
     }
-    else{//es un NPC
-        tirada.id = mensaje[0];
-    }
-
-    tirada = usaCubilete(tirada);
     return(tirada);
 }
 int comparaTiradas(Dados tiradaMax, Dados tirada){
@@ -169,6 +175,45 @@ int comparaTiradas(Dados tiradaMax, Dados tirada){
 }
 
 void almacenaTirada(Dados tirada, int shmid){
-    
+    Dados *seg = NULL;
 
+    if((seg=shmat(shmid,NULL,0))== (char *)-1)
+        printf("Error al mapear el segmento\n");
+    else{
+        if(tirada.id == ID_JUGADOR){
+            seg[MEMORIA_INDICE_JUGADOR] = tirada;
+        }
+        else{
+            seg[MEMORIA_INDICE_JUGADOR + tirada.id] = tirada;
+        }
+    }
+shmdt(seg); //des-mapeo el segmento de memoria
+
+}
+void anunciaGanador(Dados tirada){
+    key_t clave;
+ 	int msgqueue_id;
+ 	long tipo = TIPO_MSG_LEER_RESULTADO;
+ 	struct mymsgbuf qbuffer;
+ 	clave=ftok(".",'m');
+    char *mensaje = NULL;
+    mensaje[1] = '\0';
+
+    if ((msgqueue_id=msgget(clave,IPC_CREAT|0660))==-1) //iniciamos la cola
+ 	{
+ 			printf("Error al iniciar la cola\n");
+ 	}
+    else{
+
+        if(tirada.id == ID_JUGADOR){
+            mensaje[0] = MEMORIA_INDICE_JUGADOR;
+        }
+        else{
+            mensaje[0] = tirada.id;
+        }
+        qbuffer.mtype = tipo;
+            strncpy(qbuffer.mtext, mensaje, MAX_SEND_SIZE-1);
+            escr_msg(msgqueue_id, &qbuffer);
+            printf("Mensaje de anuncio de Ganador enviado \n");
+    }
 }

@@ -88,16 +88,27 @@ int leerGanador(bool npc, char *ganador){
  	long tipo = TIPO_MSG_LEER_RESULTADO;
  	struct mymsgbuf qbuffer;
  	clave=ftok(".",'m');
-
-	if(npc){
-		printf("npc va a leer mensaje \n");
-		leer_msg(msgqueue_id, tipo, &qbuffer);
-		printf("npc leyo mensaje \n");
-	}
+	if ((msgqueue_id=msgget(clave,IPC_CREAT|0660))==-1) //iniciamos la cola
+ 	{
+ 			printf("Error al iniciar la cola\n");
+ 	}
 	else{
-		printf("Jugador va a leer ganador \n");
-		leer_msg(msgqueue_id, tipo, &qbuffer);
-		strncpy(ganador, qbuffer.mtext, MAX_SEND_SIZE - 1);
+		if(npc){
+			printf("npc va a leer mensaje \n");
+			leer_msg(msgqueue_id, tipo, &qbuffer);
+			printf("npc leyo mensaje \n");
+		}
+		else{
+			printf("Jugador va a leer ganador \n");
+			leer_msg(msgqueue_id, tipo, &qbuffer);
+			strncpy(ganador, qbuffer.mtext, 2);
+			if(ganador[0] == MEMORIA_INDICE_JUGADOR){
+				resultado = GANAR;
+			}
+			else{
+				resultado = PERDER; //no contemplo el empate
+			}
+		}
 	}
  	 
 
@@ -159,10 +170,15 @@ int esperaNumJugadores(){
  	 long tipo = TIPO_MSG_INICIAR;
  	 struct mymsgbuf qbuffer;
  	 clave=ftok(".",'m');
-
-	 leer_msg(msgqueue_id, tipo, &qbuffer);
-	strncpy(mensaje, qbuffer.mtext, 2);
-	numJugadores = mensaje[0] - ASCII_CERO;
+	if ((msgqueue_id=msgget(clave,IPC_CREAT|0660))==-1) //iniciamos la cola
+ 	{
+ 			printf("Error al iniciar la cola\n");
+ 	}
+	else{
+	 	leer_msg(msgqueue_id, tipo, &qbuffer);
+		strncpy(mensaje, qbuffer.mtext, 2);
+		numJugadores = mensaje[0] - ASCII_CERO;
+	}
 
 	return(numJugadores);
 }
