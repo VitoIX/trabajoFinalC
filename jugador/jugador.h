@@ -14,6 +14,6 @@
 #define ASCII_CERO 48
 
 
-void imprimeResultado(int);
+void imprimeResultado(int, char *);
 
 #endif

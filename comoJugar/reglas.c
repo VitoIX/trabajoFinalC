@@ -23,6 +23,8 @@ bool cogerCubilete(){  //el semaforo cubilete es un semaforo binario inicializad
 	 cubilete = sem_open(nombre, 0); //abrimos el semaforo binario
 	 printf("Procedo a bajar el semaforo cubilete \n");
 	 sem_wait(cubilete); //bajo el semaforo
+	 sem_close(cubilete);
+	 turno = true;
 
     return(turno);
 }
@@ -35,6 +37,9 @@ bool soltarCubilete(){
 	 cubilete = sem_open(nombre, 0); //abrimos el semaforo binario
 	 printf("Procedo a subir el semaforo cubilete \n");
 	 sem_post(cubilete);
+	 sem_close(cubilete);
+
+	 resultado = true;
     return(resultado);
 }
 

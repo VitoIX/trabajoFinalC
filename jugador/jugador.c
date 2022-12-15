@@ -2,28 +2,31 @@
 
 
 int main(){
-    int seleccion;
+    char seleccion;
     int resultado = -1;
     bool flag = true;
     bool cancelar = false;
+    char *ganador = NULL;
     while (flag)
     {
         printf("Bienvenido al jueguito de dados, \168Qu\202 quieres hacer? \n");
         printf("Pulsa un boton para: \n");
         printf(" 1: Iniciar una partida nueva. \n 2: Salir del juego.\n ");
 
-        seleccion = getch() - ASCII_CERO;
-        //printf("%d",seleccion);
+        //seleccion = getch() - ASCII_CERO;
+        seleccion = getch() ;
+        printf("%c\n",seleccion);
         switch (seleccion)
         {
-        case 1:
+        case '1':
             printf("Introduce el n\243mero de jugadores (2 - LIMITE_JUGADORES).\n");
-            seleccion = getch() - ASCII_CERO;
-            while(!(seleccion >= 2 && seleccion <= LIMITE_JUGADORES)){
+            //seleccion = getch() - ASCII_CERO;
+            seleccion = getch() ;
+            while(!(seleccion >= '2' && seleccion <= '4')){
                 printf("Valor introducido incorrecto, introduce el numero de jugadores entre 2 y LIMITE_JUGADORES \n");
                 printf("Introduce q para cancelar.\n");
-                seleccion = getch() - ASCII_CERO;
-                if(seleccion  == 'q' - ASCII_CERO || seleccion  == 'Q' - ASCII_CERO){
+                seleccion = getch();
+                if(seleccion  == 'q' || seleccion  == 'Q'){
                     cancelar = true;
                     break;
                 }
@@ -32,14 +35,14 @@ int main(){
                 cancelar = false;
             }
             else{//el valor esta bien introducido y no quiere salir
-                resultado = jugarPartida(seleccion);
-                imprimeResultado(resultado);
+                resultado = jugarPartida(seleccion, ganador);
+                imprimeResultado(resultado, ganador);
                 printf("Pulsa un bot\243n para continuar \n");
                 getch();
                 
             }
             break;
-        case 2:
+        case '2':
             flag = false;
             break;
         default:
@@ -55,13 +58,15 @@ int main(){
 }
 
 
-void imprimeResultado(int resultado){
+void imprimeResultado(int resultado, char *ganador){
     if(resultado == GANAR){
         printf(MSG_VICTORIA);
     }
     else if (resultado == PERDER)
     {
         printf(MSG_DERROTA);
+        printf("El ganador es %s\n", ganador);
+        //añadir un lee tirada para ver cuanto saca jugador y quien ganó
     }
     else if (resultado == EMPATE)
     {
