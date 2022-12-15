@@ -162,6 +162,7 @@ void comenzarPartida(char numJugadores, char *nombre){
  	 	escr_msg(msgqueue_id, &qbuffer);
  	 	printf("Mensaje de iniciar enviado \n"); 	 	
  	 }
+	 sem_close(semInicio);
 }
 
 int esperaNumJugadores(){
