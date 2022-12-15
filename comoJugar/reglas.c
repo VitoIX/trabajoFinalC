@@ -88,7 +88,7 @@ int leerGanador(bool npc, char *ganador){
 	else{
 		printf("Jugador va a leer ganador \n");
 		leer_msg(msgqueue_id, tipo, &qbuffer);
-		strncpy(qbuffer.mtext, ganador, MAX_SEND_SIZE - 1);
+		strncpy(ganador, qbuffer.mtext, MAX_SEND_SIZE - 1);
 	}
  	 
 
@@ -140,4 +140,20 @@ void comenzarPartida(char numJugadores){
  	 	escr_msg(msgqueue_id, &qbuffer);
  	 	printf("Mensaje de iniciar enviado \n"); 	 	
  	 }
+}
+
+int esperaNumJugadores(){
+	int numJugadores = -1;
+	char *mensaje = NULL;
+	key_t clave;
+ 	 int msgqueue_id;
+ 	 long tipo = TIPO_MSG_INICIAR;
+ 	 struct mymsgbuf qbuffer;
+ 	 clave=ftok(".",'m');
+
+	 leer_msg(msgqueue_id, tipo, &qbuffer);
+	strncpy(mensaje, qbuffer.mtext, 2);
+	numJugadores = mensaje[0] - ASCII_CERO;
+
+	return(numJugadores);
 }

@@ -11,7 +11,7 @@
 
 
 
-#define ASCII_CERO 48
+
 
 
 void imprimeResultado(int, char *);

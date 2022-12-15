@@ -19,6 +19,8 @@
 #define PERDER 0
 #define EMPATE 3
 
+#define ASCII_CERO 48
+
 #define MSG_VICTORIA "VICTORIA\n"
 #define MSG_DERROTA "DERROTA\n"
 #define MSG_EMPATE "EMPATE\n"
