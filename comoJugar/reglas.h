@@ -19,6 +19,9 @@
 #define PERDER 0
 #define EMPATE 3
 
+#define INDICE_JUGADOR 168
+
+
 #define ASCII_CERO 48
 
 #define MSG_VICTORIA "VICTORIA\n"
@@ -34,7 +37,7 @@
 #define TIPO_MSG_LEER_RESULTADO 12
 #define TIPO_MSG_INICIAR 231
 
-#define MSG_TIRADA "tirada"
+#define MSG_TIRADA '9'
 
 #define MAX_SEND_SIZE 80
 
@@ -45,7 +48,7 @@ struct mymsgbuf{
 
 int jugarPartida(int, char *);
 bool cogerCubilete();
-int hacerTirada();
+int hacerTirada(int);
 bool soltarCubilete();
 int leerGanador(bool, char*);
 

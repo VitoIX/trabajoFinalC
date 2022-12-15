@@ -7,7 +7,7 @@ int jugarPartida(int jugadores, char *ganador){ //esta funcion solo la ejecutan 
     bool pnj = false;
     printf("Weno vamo a juga %d\n",jugadores);
     cogerCubilete();
-    hacerTirada();
+    hacerTirada(INDICE_JUGADOR);
     soltarCubilete();
     resultado = leerGanador(pnj, ganador);
     
@@ -43,17 +43,26 @@ bool soltarCubilete(){
     return(resultado);
 }
 
-int hacerTirada(){
+int hacerTirada(int indiceJugador){
     int resultado = -1;
-    
+    printf("Tirador indice %d \n",indiceJugador);
     //PREPARO LA COLA DE MENSAJES
     key_t clave;
  	 int msgqueue_id;
  	 long tipo = TIPO_MSG_TIRADA;
  	 struct mymsgbuf qbuffer;
  	 clave=ftok(".",'m');
+	 char *mensaje = NULL;
  	 
- 	 char *mensaje = MSG_TIRADA;
+	 if(indiceJugador == INDICE_JUGADOR){
+ 	 	mensaje[0] = MSG_TIRADA;
+		mensaje[1] = '\0';
+		printf("enviando mensaje : %s \n",mensaje);
+	 }
+	 else{
+		mensaje[0] = indiceJugador;
+		mensaje[1] = '\0';
+	 }
  	 
  	 if ((msgqueue_id=msgget(clave,IPC_CREAT|0660))==-1) //iniciamos la cola
  		{

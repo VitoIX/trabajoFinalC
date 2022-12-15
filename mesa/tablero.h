@@ -17,9 +17,14 @@
 #define ARG_SEM_INICIO 1
 #define ESPERA_MAX_NPC 6
 
+#define ID_JUGADOR 9
+
 int esperaInicio(char *);
-void creaNpc(pthread_t *);
-void *rutinaNpc();
+void creaNpc(pthread_t *, int);
+void *rutinaNpc(void *);
 int tiempoAleatorio();
+Dados esperaTirada(Dados);
+void almacenaTirada(Dados, int);
+int comparaTiradas(Dados, Dados);
 
 #endif

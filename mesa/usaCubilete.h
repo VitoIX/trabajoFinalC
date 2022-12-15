@@ -20,8 +20,9 @@
 typedef struct dados
 {
     /* data */
-    int cantidad;
+    int cantidad; //cuantos dados tiene una tirada
     int numeros[MAX_CANT_DADOS];
+    int id;
 } Dados;
 
 
