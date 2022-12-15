@@ -30,6 +30,7 @@
 
 #define TIPO_MSG_TIRADA 14
 #define TIPO_MSG_LEER_RESULTADO 12
+#define TIPO_MSG_INICIAR 231
 
 #define MSG_TIRADA "tirada"
 
@@ -48,6 +49,9 @@ int leerGanador(bool, char*);
 
 int escr_msg(int qid,struct mymsgbuf *qbuf);
 int leer_msg(int qid,long type,struct mymsgbuf *qbuf); 
+
+void comenzarPartida(char);
+int esperaNumJugadores();
 
 
 

@@ -15,8 +15,9 @@
 
 #define MAX_NUM_NPC 3
 #define ARG_SEM_INICIO 1
+#define ESPERA_MAX_NPC 6
 
-int esperaInicio();
+int esperaInicio(char *);
 void creaNpc(pthread_t *);
 void *rutinaNpc();
 int tiempoAleatorio();

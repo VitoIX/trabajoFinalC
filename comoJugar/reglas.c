@@ -115,3 +115,29 @@ int leer_msg(int qid,long type,struct mymsgbuf *qbuf)
     
    return (resultado); 
 } 
+
+void comenzarPartida(char numJugadores){
+    char mensaje[2];
+    mensaje[0] = numJugadores;
+    //printf("iniciando partida \n");
+    mensaje[1] = '\0';
+    //printf("%s \n", mensaje);
+
+    //PREPARO LA COLA DE MENSAJES
+    key_t clave;
+ 	 int msgqueue_id;
+ 	 long tipo = TIPO_MSG_INICIAR;
+ 	 struct mymsgbuf qbuffer;
+ 	 clave=ftok(".",'m');
+ 	 
+ 	 if ((msgqueue_id=msgget(clave,IPC_CREAT|0660))==-1) //iniciamos la cola
+ 		{
+ 			printf("Error al iniciar la cola\n");
+ 		}
+ 	 else{
+ 	 	qbuffer.mtype = tipo;
+ 	 	strncpy(qbuffer.mtext, mensaje, 2);
+ 	 	escr_msg(msgqueue_id, &qbuffer);
+ 	 	printf("Mensaje de iniciar enviado \n"); 	 	
+ 	 }
+}

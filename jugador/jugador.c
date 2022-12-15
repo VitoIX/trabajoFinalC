@@ -35,6 +35,8 @@ int main(){
                 cancelar = false;
             }
             else{//el valor esta bien introducido y no quiere salir
+                //printf("Voy a iniciar partida \n");
+                comenzarPartida(seleccion);
                 resultado = jugarPartida(seleccion, ganador);
                 imprimeResultado(resultado, ganador);
                 printf("Pulsa un bot\243n para continuar \n");
