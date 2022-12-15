@@ -28,7 +28,8 @@
 #define SEM_CUBILETE "cubilete"
 
 
-#define TIPO_MSG_TIRADA 0
+#define TIPO_MSG_TIRADA 14
+#define TIPO_MSG_LEER_RESULTADO 12
 
 #define MSG_TIRADA "tirada"
 
@@ -39,11 +40,11 @@ struct mymsgbuf{
  char mtext[MAX_SEND_SIZE];
 }; 
 
-int jugarPartida(int);
+int jugarPartida(int, char *);
 bool cogerCubilete();
 int hacerTirada();
 bool soltarCubilete();
-int leerResultado(bool);
+int leerGanador(bool, char*);
 
 int escr_msg(int qid,struct mymsgbuf *qbuf);
 int leer_msg(int qid,long type,struct mymsgbuf *qbuf); 

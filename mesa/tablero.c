@@ -51,11 +51,12 @@ void creaNpc(pthread_t *hilo){
 void *rutinaNpc(){
     bool npc = true;
     int espera = tiempoAleatorio();
+    char *ganador = NULL;
     sleep(espera);
     cogerCubilete();
     hacerTirada();
     soltarCubilete();
-    leerResultado(npc);
+    leerGanador(npc, ganador);
     /*sleep(2);
     printf("rutina npc \n");*/
 }

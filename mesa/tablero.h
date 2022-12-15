@@ -1,3 +1,6 @@
+#ifndef _tablero_h
+#define _tablero_h
+
 #include "inclusion.h"
 #include "../comoJugar/reglas.h"
 
@@ -17,3 +20,5 @@ int esperaInicio();
 void creaNpc(pthread_t *);
 void *rutinaNpc();
 int tiempoAleatorio();
+
+#endif

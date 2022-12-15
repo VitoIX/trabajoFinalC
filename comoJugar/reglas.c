@@ -2,14 +2,14 @@
 #include "reglas.h"
 
 
-int jugarPartida(int jugadores){
+int jugarPartida(int jugadores, char *ganador){ //esta funcion solo la ejecutan los jugadores, los npcs no
     int resultado;
     bool pnj = false;
     printf("Weno vamo a juga %d\n",jugadores);
     cogerCubilete();
     hacerTirada();
     soltarCubilete();
-    resultado = leerResultado(pnj);
+    resultado = leerGanador(pnj, ganador);
     
     return(resultado);
 }
@@ -66,8 +66,28 @@ int hacerTirada(){
     return(resultado);
 }
 
-int leerResultado(bool npc){
-    int resultado;
+int leerGanador(bool npc, char *ganador){
+    int resultado = -1;
+
+	key_t clave;
+ 	int msgqueue_id;
+ 	long tipo = TIPO_MSG_LEER_RESULTADO;
+ 	struct mymsgbuf qbuffer;
+ 	clave=ftok(".",'m');
+
+	if(npc){
+		printf("npc va a leer mensaje \n");
+		leer_msg(msgqueue_id, tipo, &qbuffer);
+		printf("npc leyo mensaje \n");
+	}
+	else{
+		printf("Jugador va a leer ganador \n");
+		leer_msg(msgqueue_id, tipo, &qbuffer);
+		strncpy(qbuffer.mtext, ganador, MAX_SEND_SIZE - 1);
+	}
+ 	 
+
+
     return(resultado);
 }
 
