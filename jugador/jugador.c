@@ -40,7 +40,7 @@ int main(int argc, char *argv[]){
             else{//el valor esta bien introducido y no quiere salir
                 //printf("Voy a iniciar partida \n");
                 comenzarPartida(seleccion, nombre);
-                resultado = jugarPartida(seleccion, ganador);
+                resultado = jugarPartida(seleccion - ASCII_CERO, ganador);
                 imprimeResultado(resultado, ganador);
                 printf("Pulsa un bot\243n para continuar \n");
                 getch();
