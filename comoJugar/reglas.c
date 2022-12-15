@@ -136,12 +136,14 @@ int leer_msg(int qid,long type,struct mymsgbuf *qbuf)
    return (resultado); 
 } 
 
-void comenzarPartida(char numJugadores){
+void comenzarPartida(char numJugadores, char *nombre){
     char mensaje[2];
     mensaje[0] = numJugadores;
     //printf("iniciando partida \n");
     mensaje[1] = '\0';
     //printf("%s \n", mensaje);
+	sem_t *semInicio = sem_open(nombre, 0);
+	sem_post(semInicio);
 
     //PREPARO LA COLA DE MENSAJES
     key_t clave;

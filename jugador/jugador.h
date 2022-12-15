@@ -11,7 +11,7 @@
 
 
 
-
+#define ARG_SEM_INICIO 1
 
 
 void imprimeResultado(int, char *);

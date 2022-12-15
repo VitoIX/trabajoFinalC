@@ -66,7 +66,7 @@ int leerGanador(bool, char*);
 int escr_msg(int qid,struct mymsgbuf *qbuf);
 int leer_msg(int qid,long type,struct mymsgbuf *qbuf); 
 
-void comenzarPartida(char);
+void comenzarPartida(char, char *);
 int esperaNumJugadores();
 
 

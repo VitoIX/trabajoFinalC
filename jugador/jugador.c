@@ -1,12 +1,15 @@
 #include "jugador.h"
 
 
-int main(){
+int main(int argc, char *argv[]){
     char seleccion;
     int resultado = -1;
     bool flag = true;
     bool cancelar = false;
     char *ganador = NULL;
+
+    char *nombre = argv[ARG_SEM_INICIO];
+
     while (flag)
     {
         printf("Bienvenido al jueguito de dados, \168Qu\202 quieres hacer? \n");
@@ -36,7 +39,7 @@ int main(){
             }
             else{//el valor esta bien introducido y no quiere salir
                 //printf("Voy a iniciar partida \n");
-                comenzarPartida(seleccion);
+                comenzarPartida(seleccion, nombre);
                 resultado = jugarPartida(seleccion, ganador);
                 imprimeResultado(resultado, ganador);
                 printf("Pulsa un bot\243n para continuar \n");
