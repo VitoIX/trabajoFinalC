@@ -35,7 +35,7 @@ int main(int argc, char *argv[]){  //tablero debe recibir un parametro con el no
     tirada.cantidad = CANTIDAD_DADOS_DEFECTO;
     tiradaMax.cantidad = CANTIDAD_DADOS_DEFECTO;
     while(flag){
-        jugadores = esperaInicio(nombre);
+        jugadores = esperaInicio(nombre);  
         //sem_wait(semInicio); //esperamos que el jugador pida empezar a jugar
         for(indice = 0 ; indice < jugadores - 1 ; indice++){ //la cantidad de npcs a crear es jugadores - 1, ese 1 es el jugador
             creaNpc(&npcs[indice], indice);
@@ -88,15 +88,16 @@ int main(int argc, char *argv[]){  //tablero debe recibir un parametro con el no
 }
 
 int esperaInicio(char *nombre){
-    int numJugadores = -1;    
+    int numJugadores = 2;    
     //sem_wait(semInicio); en windows los semaforos no funcionan bien si los crea otro proceso
-    sem_t *semInicio = sem_open(nombre, 0);
+   /* sem_t *semInicio = sem_open(nombre, 0);
     printf("Esperando inicio\n");
-    sem_wait(semInicio);
+    sem_wait(semInicio);*/
     printf("Me canse de esperar a ver cuantos juegan\n");
+    //printf("esperaInicio numJugadores= %d",numJugadores);
     numJugadores = esperaNumJugadores();
     printf("estoy en esperaInicio seran %d juigadores",numJugadores);
-    sem_close(semInicio);
+    //sem_close(semInicio);
     return(numJugadores);
 }
 

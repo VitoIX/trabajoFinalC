@@ -191,6 +191,6 @@ int esperaNumJugadores(){
 		printf("12.Convierto en int %d jugadores\n",numJugadores);
 	}
 	printf("esperaNumJugadores termina y devuelve %d jugadores \n",numJugadores);
-
+	
 	return(numJugadores);
 }
