@@ -95,7 +95,7 @@ int esperaInicio(char *nombre){
     sem_wait(semInicio);
     printf("Me canse de esperar a ver cuantos juegan\n");
     numJugadores = esperaNumJugadores();
-
+    printf("estoy en esperaInicio seran %d juigadores",numJugadores);
     return(numJugadores);
 }
 

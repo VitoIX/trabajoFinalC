@@ -52,7 +52,7 @@ int hacerTirada(int indiceJugador){
  	 long tipo = TIPO_MSG_TIRADA;
  	 struct mymsgbuf qbuffer;
  	 clave=ftok(".",'m');
-	 char *mensaje = NULL;
+	 char mensaje[MAX_SEND_SIZE];
  	 
 	 if(indiceJugador == INDICE_JUGADOR){
  	 	mensaje[0] = MSG_TIRADA;
@@ -167,7 +167,7 @@ void comenzarPartida(char numJugadores, char *nombre){
 
 int esperaNumJugadores(){
 	int numJugadores = -1;
-	char *mensaje = NULL;
+	char mensaje[MAX_SEND_SIZE];
 	key_t clave;
  	 int msgqueue_id;
  	 long tipo = TIPO_MSG_INICIAR;
@@ -177,11 +177,20 @@ int esperaNumJugadores(){
  	{
  			printf("Error al iniciar la cola\n");
  	}
-	else{
+	else{		
+		printf("antes de leer \n");
 	 	leer_msg(msgqueue_id, tipo, &qbuffer);
-		strncpy(mensaje, qbuffer.mtext, 2);
-		numJugadores = mensaje[0] - ASCII_CERO;
+		printf("Antes de copiar, %s\n", qbuffer.mtext);
+		strncpy(mensaje, qbuffer.mtext, 2); 			//no va no se porque
+		/*
+		mensaje[0] = qbuffer.mtext[0];
+		mensaje[1] = qbuffer.mtext[1]; */
+
+		printf("he copiado el mensaje, %s \n",mensaje);
+		numJugadores = ((int) mensaje[0]) - ASCII_CERO;
+		printf("12.Convierto en int %d jugadores\n",numJugadores);
 	}
+	printf("esperaNumJugadores termina y devuelve %d jugadores \n",numJugadores);
 
 	return(numJugadores);
 }
