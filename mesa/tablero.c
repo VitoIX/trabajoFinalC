@@ -34,6 +34,8 @@ int main(int argc, char *argv[]){  //tablero debe recibir un parametro con el no
     
     tirada.cantidad = CANTIDAD_DADOS_DEFECTO;
     tiradaMax.cantidad = CANTIDAD_DADOS_DEFECTO;
+    tiradaMax.numeros[0]=0;
+    tiradaMax.numeros[1]=0;
     while(flag){
         jugadores = esperaInicio(nombre);  
         //sem_wait(semInicio); //esperamos que el jugador pida empezar a jugar
@@ -72,17 +74,19 @@ int main(int argc, char *argv[]){  //tablero debe recibir un parametro con el no
                 break;
             }
         }
-        anunciaGanador(tiradaMax);
+        for(indice = 0 ; indice < jugadores ; indice++){
+            anunciaGanador(tiradaMax);
+        }
 
         flag = false;
     }
-    tirada.cantidad = CANTIDAD_DADOS_DEFECTO;
-    tirada = usaCubilete(tirada);
+    //tirada.cantidad = CANTIDAD_DADOS_DEFECTO;
+    //tirada = usaCubilete(tirada);
 
 
-    printf("Salio un %d y un %d.\n", tirada.numeros[0], tirada.numeros[1]);
+    //printf("Salio un %d y un %d.\n", tirada.numeros[0], tirada.numeros[1]);
 
-    dibujaDado(tirada);
+    //dibujaDado(tirada);
     //sem_close(semInicio);
     return(0);
 }

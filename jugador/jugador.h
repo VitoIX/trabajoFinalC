@@ -5,6 +5,7 @@
 #include "../libreriasNS/conio.h"
 #include <stdbool.h>
 
+#include <signal.h>
 
 #include "../comoJugar/reglas.h"
 
@@ -15,5 +16,6 @@
 
 
 void imprimeResultado(int, char *);
+void fin();
 
 #endif

@@ -83,3 +83,8 @@ void imprimeResultado(int resultado, char *ganador){
     
 
 }
+
+void fin(){
+    execvp("./terminar.sh", &argv[1]);
+    perror("exec");
+}

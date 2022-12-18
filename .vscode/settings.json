@@ -7,6 +7,7 @@
         "stdbool.h": "c",
         "semaphore.h": "c",
         "reglas.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "conio.h": "c"
     }
 }
